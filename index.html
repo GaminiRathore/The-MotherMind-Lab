@@ -689,54 +689,44 @@
       nav .links { gap: 16px; }
       nav .links a { font-size: 11px; letter-spacing: 0.06em; }
 
-      /* HERO — shorter, figure larger relative to screen */
+      /* HERO */
       #hero { height: 100vh; }
-      .hero-wordmark {
-        top: 58px;
-        width: 96vw;
-      }
+      .hero-wordmark { top: 58px; width: 96vw; }
       #scene {
         width: 96vw;
         height: clamp(320px, 72vh, 620px);
       }
-      /* hide laptop on mobile — too small to read */
-      #laptop-wrap { display: none; }
       .scroll-hint { display: none; }
 
       /* SKIPER28 */
       #skiper28 { height: 220vh; }
 
-      /* SERVICES */
-      #services { height: auto; min-height: unset; }
-      .services-stage {
-        position: relative; top: unset;
-        height: auto; flex-direction: column;
-        padding: 80px 0 60px;
+      /* SERVICES — break sticky layout, stack vertically */
+      #svc-outer { height: auto !important; }
+      #svc-inner {
+        position: relative !important;
+        height: auto !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 32px;
+        padding: 80px 20px 60px;
       }
-      .services-wrap { flex-direction: column; gap: 0; }
       .services-list-col {
-        position: relative; height: auto;
-        width: 100%; padding: 0 20px 32px;
+        width: 100% !important;
       }
-      .s16-eyebrow { margin-bottom: 24px; }
-      .s16-list { flex-direction: column; gap: 4px; }
       .s16-item {
         font-size: 12px;
         letter-spacing: 0.02em;
-        padding: 10px 0 10px 12px;
         white-space: normal;
         word-break: break-word;
       }
-      .services-cards-col {
-        width: 100%; padding: 0 20px 40px;
-        display: flex; justify-content: center;
-      }
       #svc-cards {
-        width: min(80vw, 340px);
-        height: clamp(160px, 50vw, 260px);
+        width: min(80vw, 340px) !important;
+        height: clamp(160px, 50vw, 260px) !important;
+        margin: 0 auto;
       }
 
-      /* WORK */
+      /* WORK carousel */
       .carousel-wrap { height: clamp(200px, 60vw, 320px); }
       .carousel-slide {
         width: clamp(160px, 60vw, 280px);
@@ -1244,6 +1234,19 @@
       setInterval(function() {
         setCarousel((carouselIdx + 1) % slides.length);
       }, 3500);
+
+      /* Touch swipe */
+      var touchStartX = 0;
+      carouselWrap.addEventListener('touchstart', function(e) {
+        touchStartX = e.touches[0].clientX;
+      }, { passive: true });
+      carouselWrap.addEventListener('touchend', function(e) {
+        var dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 40) {
+          if (dx < 0) setCarousel((carouselIdx + 1) % slides.length);
+          else setCarousel((carouselIdx - 1 + slides.length) % slides.length);
+        }
+      }, { passive: true });
     }
 
     /* ── Services: card stacking + active list ──────── */
