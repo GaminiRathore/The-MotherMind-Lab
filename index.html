@@ -697,7 +697,10 @@
         top: 60px;
         width: 96vw;
         height: calc(100vh - 60px);
+        align-items: flex-start;
       }
+      #scene .fig-wrap { align-items: flex-start; }
+      #scene .hero-fig { align-self: flex-start; }
       .scroll-hint { display: none; }
 
       /* SKIPER28 — less empty scrolling */
@@ -1282,11 +1285,19 @@
           var card = document.getElementById(id);
           if (!card) return;
           if (i < active) {
-            /* past cards: peek upward so tops are visible above the active card */
+            /* past cards */
             var behind = active - i;
-            card.style.opacity   = behind <= 4 ? '1' : '0';
-            card.style.zIndex    = String(10 - behind);
-            card.style.transform = 'scale(' + (1 - behind * 0.03) + ') translateY(' + (-behind * 44) + 'px)';
+            if (window.innerWidth <= 800) {
+              /* mobile: hide cards behind entirely, no peek overlap */
+              card.style.opacity   = '0';
+              card.style.zIndex    = String(10 - behind);
+              card.style.transform = 'scale(1) translateY(0)';
+            } else {
+              /* desktop: peek upward so tops are visible above the active card */
+              card.style.opacity   = behind <= 4 ? '1' : '0';
+              card.style.zIndex    = String(10 - behind);
+              card.style.transform = 'scale(' + (1 - behind * 0.03) + ') translateY(' + (-behind * 44) + 'px)';
+            }
           } else if (i === active) {
             /* current card: full size on top */
             card.style.opacity   = '1';
