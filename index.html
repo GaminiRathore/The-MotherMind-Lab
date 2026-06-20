@@ -689,50 +689,32 @@
       nav .links { gap: 16px; }
       nav .links a { font-size: 11px; letter-spacing: 0.06em; }
 
-      /* HERO — push figure up tight below wordmark */
+      /* HERO — figure pushed high, right below wordmark */
       #hero { height: 100vh; }
       .hero-wordmark { top: 58px; width: 96vw; }
       #scene {
         bottom: auto;
-        top: 95px;
+        top: 60px;
         width: 96vw;
-        height: calc(100vh - 95px);
+        height: calc(100vh - 60px);
       }
       .scroll-hint { display: none; }
 
-      /* LAPTOP — freeze animation, show as static open laptop */
-      #laptop-wrap .macbook .inner {
-        animation: none !important;
-        transform: rotateX(-20deg) !important;
-      }
-      #laptop-wrap .macbook .screen {
-        animation: none !important;
-        transform: rotateX(0deg) !important;
-      }
-      #laptop-wrap .macbook .macbody {
-        animation: none !important;
-        transform: rotateX(-90deg) !important;
-      }
-      #laptop-wrap .macbook .shadow {
-        animation: none !important;
-        box-shadow: none !important;
-      }
-      #laptop-wrap .macbook .screen .face-one .display .shade {
-        animation: none !important;
-      }
+      /* SKIPER28 — less empty scrolling */
+      #skiper28 { height: 120vh; }
 
-      /* SKIPER28 */
-      #skiper28 { height: 150vh; }
-
-      /* SERVICES — keep sticky/scroll JS working but stack layout vertically */
+      /* SERVICES — force block layout so list stacks above cards */
       #svc-outer { height: 350vh; }
       #svc-inner {
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        gap: 32px;
-        padding: 80px 20px 60px;
+        display: block !important;
+        height: auto !important;
+        padding: 60px 20px 40px;
+        overflow: visible;
       }
-      .services-list-col { width: 100% !important; }
+      .services-list-col {
+        width: 100% !important;
+        margin-bottom: 28px;
+      }
       .s16-item {
         font-size: 12px;
         letter-spacing: 0.02em;
@@ -740,9 +722,10 @@
         word-break: break-word;
       }
       #svc-cards {
-        width: min(80vw, 340px) !important;
-        height: clamp(160px, 50vw, 260px) !important;
+        width: min(82vw, 320px) !important;
+        height: clamp(150px, 48vw, 240px) !important;
         margin: 0 auto;
+        position: relative !important;
       }
 
       /* WORK carousel */
@@ -769,7 +752,7 @@
       nav .links a { font-size: 10px; letter-spacing: 0.02em; }
       nav .links { gap: 10px; }
       .hero-wordmark { top: 54px; width: 98vw; }
-      #scene { top: 90px; height: calc(100vh - 90px); }
+      #scene { top: 56px; height: calc(100vh - 56px); }
     }
   </style>
 </head>
