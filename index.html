@@ -689,31 +689,50 @@
       nav .links { gap: 16px; }
       nav .links a { font-size: 11px; letter-spacing: 0.06em; }
 
-      /* HERO */
+      /* HERO — push figure up tight below wordmark */
       #hero { height: 100vh; }
       .hero-wordmark { top: 58px; width: 96vw; }
       #scene {
+        bottom: auto;
+        top: 95px;
         width: 96vw;
-        height: clamp(320px, 72vh, 620px);
+        height: calc(100vh - 95px);
       }
       .scroll-hint { display: none; }
 
-      /* SKIPER28 */
-      #skiper28 { height: 220vh; }
+      /* LAPTOP — freeze animation, show as static open laptop */
+      #laptop-wrap .macbook .inner {
+        animation: none !important;
+        transform: rotateX(-20deg) !important;
+      }
+      #laptop-wrap .macbook .screen {
+        animation: none !important;
+        transform: rotateX(0deg) !important;
+      }
+      #laptop-wrap .macbook .macbody {
+        animation: none !important;
+        transform: rotateX(-90deg) !important;
+      }
+      #laptop-wrap .macbook .shadow {
+        animation: none !important;
+        box-shadow: none !important;
+      }
+      #laptop-wrap .macbook .screen .face-one .display .shade {
+        animation: none !important;
+      }
 
-      /* SERVICES — break sticky layout, stack vertically */
-      #svc-outer { height: auto !important; }
+      /* SKIPER28 */
+      #skiper28 { height: 150vh; }
+
+      /* SERVICES — keep sticky/scroll JS working but stack layout vertically */
+      #svc-outer { height: 350vh; }
       #svc-inner {
-        position: relative !important;
-        height: auto !important;
         flex-direction: column !important;
         align-items: flex-start !important;
         gap: 32px;
         padding: 80px 20px 60px;
       }
-      .services-list-col {
-        width: 100% !important;
-      }
+      .services-list-col { width: 100% !important; }
       .s16-item {
         font-size: 12px;
         letter-spacing: 0.02em;
@@ -750,7 +769,7 @@
       nav .links a { font-size: 10px; letter-spacing: 0.02em; }
       nav .links { gap: 10px; }
       .hero-wordmark { top: 54px; width: 98vw; }
-      #scene { height: clamp(280px, 68vh, 500px); }
+      #scene { top: 90px; height: calc(100vh - 90px); }
     }
   </style>
 </head>
