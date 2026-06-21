@@ -725,21 +725,43 @@
       }
       nav .links a:last-child { border-bottom: none; }
 
-      /* HERO — feet at bottom, top gap pushes hand below wordmark */
-      #hero { height: 100vh; }
-      .hero-wordmark { top: 58px; width: 96vw; }
-      #scene {
-        top: auto;
-        bottom: 0;
-        width: 96vw;
-        height: calc(100vh - 120px);
-        align-items: flex-end;
+      /* HERO — flow layout: figure sits directly under the wordmark, no gaps */
+      #hero {
+        height: auto;
+        min-height: auto;
+        padding-bottom: 24px;
+        display: block;
       }
-      #scene .fig-wrap { align-items: flex-end; }
-      #scene .hero-fig { align-self: flex-end; }
+      .hero-wordmark {
+        position: relative;
+        top: auto; left: auto;
+        transform: none;
+        margin: 96px auto 0;
+        width: 96vw;
+      }
+      #scene {
+        position: relative;
+        top: auto; bottom: auto; left: auto;
+        transform: none;
+        margin: 8px auto 0;
+        width: 92vw;
+        height: auto;
+        animation: none; opacity: 1;
+      }
+      #scene .fig-wrap {
+        height: auto; width: 100%;
+        align-items: flex-start; justify-content: center;
+      }
+      #scene .hero-fig {
+        width: 100%; height: auto;
+        max-height: none; max-width: 100%;
+        align-self: center;
+      }
       .scroll-hint { display: none; }
 
-      /* LAPTOP — freeze in clean open pose (spin looks flat mid-frame on small screens) */
+      /* LAPTOP — reposition onto the extended palm for the flow layout */
+      #laptop-wrap { left: 60%; top: 30%; }
+      /* freeze in clean open pose (spin looks flat mid-frame on small screens) */
       #laptop-wrap .macbook .inner   { animation: none !important; transform: rotateX(-25deg) rotateY(-12deg) !important; }
       #laptop-wrap .macbook .screen  { animation: none !important; transform: rotateX(-5deg) !important; }
       #laptop-wrap .macbook .macbody { animation: none !important; transform: rotateX(-90deg) !important; }
