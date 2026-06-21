@@ -732,12 +732,19 @@
         top: auto;
         bottom: 0;
         width: 96vw;
-        height: calc(100vh - 175px);
+        height: calc(100vh - 120px);
         align-items: flex-end;
       }
       #scene .fig-wrap { align-items: flex-end; }
       #scene .hero-fig { align-self: flex-end; }
       .scroll-hint { display: none; }
+
+      /* LAPTOP — freeze in clean open pose (spin looks flat mid-frame on small screens) */
+      #laptop-wrap .macbook .inner   { animation: none !important; transform: rotateX(-25deg) rotateY(-12deg) !important; }
+      #laptop-wrap .macbook .screen  { animation: none !important; transform: rotateX(-5deg) !important; }
+      #laptop-wrap .macbook .macbody { animation: none !important; transform: rotateX(-90deg) !important; }
+      #laptop-wrap .macbook .shadow  { animation: none !important; box-shadow: 0 0 30px 18px rgba(0,0,0,.18) !important; }
+      #laptop-wrap .macbook .screen .face-one .display .shade { animation: none !important; }
 
       /* SKIPER28 — less empty scrolling */
       #skiper28 { height: 110vh; }
