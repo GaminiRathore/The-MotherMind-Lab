@@ -739,7 +739,7 @@
       .scroll-hint { display: none; }
 
       /* LAPTOP — positioned on the lower (extended) palm; rotation kept on */
-      #laptop-wrap { left: 56%; top: 58%; }
+      #laptop-wrap { left: 61%; top: 46%; }
 
       /* SKIPER28 — less empty scrolling */
       #skiper28 { height: 110vh; }
@@ -1140,7 +1140,8 @@
       var wrap  = document.getElementById('laptop-wrap');
       if (!scene || !wrap) return;
       var s = (scene.offsetWidth * 0.18) / 150;
-      wrap.style.transform = 'scale(' + s + ') rotate(10deg)';
+      var tilt = window.innerWidth <= 800 ? 20 : 10;
+      wrap.style.transform = 'scale(' + s + ') rotate(' + tilt + 'deg)';
     }
     setTimeout(scaleLaptop, 100);
     window.addEventListener('resize', scaleLaptop);
