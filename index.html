@@ -218,10 +218,9 @@
     }
     .macbook .key {
       width: 6px; height: 6px;
-      background: #444; border-radius: 2px;
-      box-shadow: 0 -2px 0 #222; flex-shrink: 0;
+      background: #1c1c1c; border-radius: 1.5px;
+      box-shadow: 0 1px 0 #000; flex-shrink: 0;
       animation: mb-keys 7s ease infinite;
-      transform: translateZ(-2px);
     }
     .macbook .key.space { width: 45px; }
     .macbook .key.f     { height: 3px; }
@@ -739,14 +738,8 @@
       #scene .hero-fig { align-self: flex-end; }
       .scroll-hint { display: none; }
 
-      /* LAPTOP — temporarily hidden on mobile while we fix the figure position */
-      #laptop-wrap { display: none !important; }
-      /* freeze in clean open pose (spin looks flat mid-frame on small screens) */
-      #laptop-wrap .macbook .inner   { animation: none !important; transform: rotateX(-25deg) rotateY(-12deg) !important; }
-      #laptop-wrap .macbook .screen  { animation: none !important; transform: rotateX(-5deg) !important; }
-      #laptop-wrap .macbook .macbody { animation: none !important; transform: rotateX(-90deg) !important; }
-      #laptop-wrap .macbook .shadow  { animation: none !important; box-shadow: 0 0 30px 18px rgba(0,0,0,.18) !important; }
-      #laptop-wrap .macbook .screen .face-one .display .shade { animation: none !important; }
+      /* LAPTOP — positioned on the lower (extended) palm; rotation kept on */
+      #laptop-wrap { left: 56%; top: 58%; }
 
       /* SKIPER28 — less empty scrolling */
       #skiper28 { height: 110vh; }
