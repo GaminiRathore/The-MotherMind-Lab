@@ -730,7 +730,7 @@
       .hero-wordmark { top: 58px; width: 96vw; }
       #scene {
         top: auto;
-        bottom: 40px;
+        bottom: 150px;
         width: 96vw;
         height: calc(100vh - 120px);
         align-items: flex-end;
@@ -739,7 +739,9 @@
       #scene .hero-fig { align-self: flex-end; }
       .scroll-hint { display: none; }
 
-      /* LAPTOP — freeze in clean open pose (spin looks flat mid-frame on small screens) */
+      /* LAPTOP — temporarily hidden on mobile while we fix the figure position */
+      #laptop-wrap { display: none !important; }
+      /* freeze in clean open pose (spin looks flat mid-frame on small screens) */
       #laptop-wrap .macbook .inner   { animation: none !important; transform: rotateX(-25deg) rotateY(-12deg) !important; }
       #laptop-wrap .macbook .screen  { animation: none !important; transform: rotateX(-5deg) !important; }
       #laptop-wrap .macbook .macbody { animation: none !important; transform: rotateX(-90deg) !important; }
