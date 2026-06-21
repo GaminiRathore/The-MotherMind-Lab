@@ -739,10 +739,10 @@
       .scroll-hint { display: none; }
 
       /* LAPTOP — positioned on the lower (extended) palm; rotation kept on */
-      #laptop-wrap { left: 61%; top: 46%; }
+      #laptop-wrap { left: 65%; top: 40%; }
 
-      /* SKIPER28 — less empty scrolling */
-      #skiper28 { height: 110vh; }
+      /* SKIPER28 — enough scroll travel so text crawls visibly */
+      #skiper28 { height: 350vh; }
 
       /* SERVICES — force block layout so list stacks above cards */
       #svc-outer { height: 350vh; }
@@ -1113,6 +1113,10 @@
     </div>
   </footer>
 
+  <script>
+  if (history.scrollRestoration) history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
+  </script>
   <script>
   (function () {
 
