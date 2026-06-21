@@ -725,22 +725,22 @@
       }
       nav .links a:last-child { border-bottom: none; }
 
-      /* HERO — figure pushed high, right below wordmark */
+      /* HERO — feet at bottom, top gap pushes hand below wordmark */
       #hero { height: 100vh; }
       .hero-wordmark { top: 58px; width: 96vw; }
       #scene {
-        bottom: auto;
-        top: 165px;
+        top: auto;
+        bottom: 0;
         width: 96vw;
-        height: calc(100vh - 165px);
-        align-items: flex-start;
+        height: calc(100vh - 175px);
+        align-items: flex-end;
       }
-      #scene .fig-wrap { align-items: flex-start; }
-      #scene .hero-fig { align-self: flex-start; }
+      #scene .fig-wrap { align-items: flex-end; }
+      #scene .hero-fig { align-self: flex-end; }
       .scroll-hint { display: none; }
 
       /* SKIPER28 — less empty scrolling */
-      #skiper28 { height: 120vh; }
+      #skiper28 { height: 110vh; }
 
       /* SERVICES — force block layout so list stacks above cards */
       #svc-outer { height: 350vh; }
@@ -983,13 +983,6 @@
           They're personal.
         </p>
       </div>
-      <a href="#contact" class="about-cta">
-        Let's work together
-        <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
-          <path d="M1 5h12M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.2"
-                stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
     </div>
   </section>
 
@@ -1199,9 +1192,13 @@
       if (!s28Text) return;
       var h  = s28Text.offsetHeight;
       var vh = window.innerHeight;
-      /* text enters from bottom of tilted plane, exits toward horizon */
-      s28Start   =  h * 0.55 + vh * 0.10;
-      s28End     = -h * 0.55 - vh * 0.10;
+      var mobile = window.innerWidth <= 800;
+      /* text enters from bottom of tilted plane, exits toward horizon.
+         On mobile, start closer to center so there's no long blank screen. */
+      var k = mobile ? 0.30 : 0.55;
+      var m = mobile ? 0.04 : 0.10;
+      s28Start   =  h * k + vh * m;
+      s28End     = -h * k - vh * m;
       s28Current =  s28Start;
       s28Text.style.transform = 'rotateX(35deg) translateY(' + s28Start + 'px)';
     }
@@ -1230,7 +1227,7 @@
     /* ── Client carousel (CLIENTS array moved below) ── */
     /* ── 3D Carousel ────────────────────────────────── */
     var CLIENTS = [
-      { img: 'client-1.JPEG', alt: 'Client 01' },
+      { img: 'client-1.jpeg', alt: 'Client 01' },
       { img: 'client-2.jpg',  alt: 'Client 02' },
       { img: 'client-3.jpg',  alt: 'Client 03' },
       { img: 'client-4.jpg',  alt: 'Client 04' },
